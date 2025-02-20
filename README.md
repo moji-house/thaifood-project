@@ -123,4 +123,4 @@ npm run dev
 
 For questions or feedback:
 
-- GitHub: [your-username](https://github.com/HeartThanakorn)
+- GitHub: [HeartThanakorn](https://github.com/HeartThanakorn)
