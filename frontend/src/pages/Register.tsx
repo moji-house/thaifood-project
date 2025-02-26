@@ -34,7 +34,7 @@ const Register = () => {
       setIsLoading(true);
 
       // ส่งข้อมูลไปยัง Backend API
-      await axios.post("http://localhost:3001/api/user/register", {
+      await axios.post("/api/user/register", {
         firstname: firstName,
         lastname: lastName,
         email,

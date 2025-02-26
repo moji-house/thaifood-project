@@ -36,7 +36,7 @@ const Checkout = () => {
       // Save cart items first
       for (const item of cartItems) {
         await axios.post(
-          "http://localhost:3001/api/carts",
+          "/api/carts",
           {
             product_id: item.id,
             quantity: item.quantity,
@@ -50,7 +50,7 @@ const Checkout = () => {
 
       // Create order
       const orderResponse = await axios.post(
-        "http://localhost:3001/api/orders",
+        "/api/orders",
         {
           user_id: user?.id,
           sub_total: subtotal,
@@ -67,7 +67,7 @@ const Checkout = () => {
 
       // Create order products
       await axios.post(
-        `http://localhost:3001/api/order-products/bulk`,
+        `/api/order-products/bulk`,
         {
           order_id: orderResponse.data.id,
           products: cartItems.map((item) => ({

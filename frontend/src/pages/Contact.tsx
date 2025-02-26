@@ -37,7 +37,7 @@ const Contact = () => {
       setIsLoading(true);
 
       // ส่งข้อมูลไปยัง Backend API
-      await axios.post("http://localhost:3001/api/contacts", {
+      await axios.post("/api/contacts", {
         firstname: firstName,
         lastname: lastName,
         email,

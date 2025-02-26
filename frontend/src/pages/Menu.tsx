@@ -36,12 +36,12 @@ const Menu = () => {
     const fetchProducts = async () => {
       try {
         const productsResponse = await axios.get(
-          "http://localhost:3001/api/products"
+          "/api/products"
         );
         setProducts(productsResponse.data);
 
         const categoriesResponse = await axios.get(
-          "http://localhost:3001/api/categories"
+          "/api/categories"
         );
         setCategories([{ id: 0, name: "All" }, ...categoriesResponse.data]);
       } catch (error) {
