@@ -11,6 +11,7 @@ import cartRoutes from "./api/routes/cartRoutes.js";
 import orderRoutes from "./api/routes/orderRoutes.js";
 import orderProductRoutes from "./api/routes/orderProductRoutes.js";
 import contactRoutes from "./api/routes/contactRoutes.js";
+import path from "path";
 
 dotenv.config();
 
