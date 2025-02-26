@@ -1,16 +1,16 @@
 import express from "express";
 import dotenv from "dotenv";
-import db from "./config/db.js";
+import db from "./api/config/db.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import healthRoutes from "./routes/healthRoutes.js";
-import userRoutes from "./routes/userRoutes.js";
-import categoryRoutes from "./routes/categoryRoutes.js";
-import productRoutes from "./routes/productRoutes.js";
-import cartRoutes from "./routes/cartRoutes.js";
-import orderRoutes from "./routes/orderRoutes.js";
-import orderProductRoutes from "./routes/orderProductRoutes.js";
-import contactRoutes from "./routes/contactRoutes.js";
+import healthRoutes from "./api/routes/healthRoutes.js";
+import userRoutes from "./api/routes/userRoutes.js";
+import categoryRoutes from "./api/routes/categoryRoutes.js";
+import productRoutes from "./api/routes/productRoutes.js";
+import cartRoutes from "./api/routes/cartRoutes.js";
+import orderRoutes from "./api/routes/orderRoutes.js";
+import orderProductRoutes from "./api/routes/orderProductRoutes.js";
+import contactRoutes from "./api/routes/contactRoutes.js";
 
 dotenv.config();
 
@@ -36,6 +36,22 @@ app.use("/api/carts", cartRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/order-products", orderProductRoutes);
 app.use("/api/contacts", contactRoutes);
+
+// Deployment
+
+const __dirname = path.resolve();
+
+if (process.env.NODE_ENV === "production") {
+  const staticFilesPath = path.join(__dirname, "frontend", "dist");
+  app.use(express.static(staticFilesPath));
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(staticFilesPath, "index.html"));
+  });
+} else {
+  app.get("/", (req, res) => {
+    res.send("api listing...");
+  });
+}
 
 // Test Database Connection
 try {
